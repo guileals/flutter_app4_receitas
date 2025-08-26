@@ -226,7 +226,6 @@ void main() {
         expect(result.left.message, equals('Erro ao fazer login'));
       });
     });
-
     group('signUp', () {
       test(
         'deve retornar UserProfile quando cadastro é bem-sucedido',
@@ -446,7 +445,6 @@ void main() {
         expect(result.left.message, equals('Erro inesperado'));
       });
     });
-
     group('signOut', () {
       test('deve retornar sucesso quando logout é bem-sucedido', () async {
         // Arrange
