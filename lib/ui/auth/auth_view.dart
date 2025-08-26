@@ -16,26 +16,26 @@ class _AuthViewState extends State<AuthView>
   final viewModel = getIt<AuthViewModel>();
 
   late AnimationController _animationController;
-  late Animation<double> _animation;
+  // late Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
 
-    _animationController =
-        AnimationController(
-          vsync: this,
-          duration: const Duration(milliseconds: 1000),
-        )..addStatusListener((listener) {
-          if (listener == AnimationStatus.completed) {
-            _animationController.reverse();
-          } else if (listener == AnimationStatus.dismissed) {
-            _animationController.forward();
-          }
-        });
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
+    // )..addStatusListener((listener) {
+    //   if (listener == AnimationStatus.completed) {
+    //     _animationController.reverse();
+    //   } else if (listener == AnimationStatus.dismissed) {
+    //     _animationController.forward();
+    //   }
+    // });
 
-    _animation = Tween(begin: 50.0, end: 200.0).animate(_animationController);
-    _animation.addListener(() => setState(() {}));
+    // _animation = Tween(begin: 50.0, end: 200.0).animate(_animationController);
+    // _animation.addListener(() => setState(() {}));
 
     _animationController.forward();
   }
@@ -118,10 +118,13 @@ class _AuthViewState extends State<AuthView>
           end: 200.0,
         ).animate(CurvedAnimation(parent: controller, curve: Curves.easeInOut));
 
-        final colorTween = ColorTween(
-          begin: Theme.of(context).colorScheme.onError,
-          end: Theme.of(context).colorScheme.primary,
-        ).animate(CurvedAnimation(parent: controller, curve: Curves.bounceInOut));
+        final colorTween =
+            ColorTween(
+              begin: Theme.of(context).colorScheme.onError,
+              end: Theme.of(context).colorScheme.primary,
+            ).animate(
+              CurvedAnimation(parent: controller, curve: Curves.bounceInOut),
+            );
 
         final angleTween = Tween(
           begin: 0.0,
